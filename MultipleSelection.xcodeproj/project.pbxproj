@@ -9,21 +9,22 @@
 /* Begin PBXBuildFile section */
 		4C6D29DF243071000098A050 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D29DE243071000098A050 /* AppDelegate.swift */; };
 		4C6D29E1243071000098A050 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D29E0243071000098A050 /* SceneDelegate.swift */; };
-		4C6D29E3243071000098A050 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D29E2243071000098A050 /* ViewController.swift */; };
 		4C6D29E6243071000098A050 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6D29E4243071000098A050 /* Main.storyboard */; };
 		4C6D29E8243071010098A050 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C6D29E7243071010098A050 /* Assets.xcassets */; };
 		4C6D29EB243071010098A050 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6D29E9243071010098A050 /* LaunchScreen.storyboard */; };
+		4C6D29F4243074840098A050 /* SelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D29F3243074840098A050 /* SelectionTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4C6D29DB243071000098A050 /* MultipleSelection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultipleSelection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6D29DE243071000098A050 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C6D29E0243071000098A050 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4C6D29E2243071000098A050 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C6D29E5243071000098A050 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C6D29E7243071010098A050 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C6D29EA243071010098A050 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C6D29EC243071010098A050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C6D29F22430710C0098A050 /* MultipleSelection.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MultipleSelection.entitlements; sourceTree = "<group>"; };
+		4C6D29F3243074840098A050 /* SelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +57,11 @@
 		4C6D29DD243071000098A050 /* MultipleSelection */ = {
 			isa = PBXGroup;
 			children = (
+				4C6D29F22430710C0098A050 /* MultipleSelection.entitlements */,
 				4C6D29DE243071000098A050 /* AppDelegate.swift */,
 				4C6D29E0243071000098A050 /* SceneDelegate.swift */,
-				4C6D29E2243071000098A050 /* ViewController.swift */,
 				4C6D29E4243071000098A050 /* Main.storyboard */,
+				4C6D29F3243074840098A050 /* SelectionTableViewController.swift */,
 				4C6D29E7243071010098A050 /* Assets.xcassets */,
 				4C6D29E9243071010098A050 /* LaunchScreen.storyboard */,
 				4C6D29EC243071010098A050 /* Info.plist */,
@@ -138,8 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C6D29E3243071000098A050 /* ViewController.swift in Sources */,
 				4C6D29DF243071000098A050 /* AppDelegate.swift in Sources */,
+				4C6D29F4243074840098A050 /* SelectionTableViewController.swift in Sources */,
 				4C6D29E1243071000098A050 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MultipleSelection/MultipleSelection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6V82P5ET42;
 				INFOPLIST_FILE = MultipleSelection/Info.plist;
@@ -293,6 +296,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TransitionTechnologyVentures.MultipleSelection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -302,6 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MultipleSelection/MultipleSelection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6V82P5ET42;
 				INFOPLIST_FILE = MultipleSelection/Info.plist;
@@ -311,6 +316,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TransitionTechnologyVentures.MultipleSelection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
