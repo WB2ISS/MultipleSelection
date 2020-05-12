@@ -11,7 +11,7 @@ import UIKit
 let rowContents = ["Zero", "One", "Two", "Three"]
 
 class SelectionTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Multiple Selection"
@@ -20,6 +20,8 @@ class SelectionTableViewController: UITableViewController {
     }
 
     @objc func startExporting() {
+        let selectButtonItem  = UIBarButtonItem(title:"Select All", style: .plain, target: self, action: #selector(selectAllItems))
+        navigationItem.setRightBarButtonItems([selectButtonItem], animated: true)
         let cancelButtonItem  = UIBarButtonItem(title:"Cancel", style: .plain, target: self, action: #selector(cancel))
         cancelButtonItem.style = .done
         navigationItem.setLeftBarButtonItems([cancelButtonItem], animated: true)
@@ -31,9 +33,19 @@ class SelectionTableViewController: UITableViewController {
     @objc func cancel() {
         let exportButtonItem  = UIBarButtonItem(title:"Export", style: .plain, target: self, action: #selector(startExporting))
         self.navigationItem.setLeftBarButtonItems([exportButtonItem], animated: true)
+        self.navigationItem.setRightBarButtonItems([], animated: true)
         tableView.allowsMultipleSelectionDuringEditing = false
         super.setEditing(true, animated: false)
         tableView.setEditing(true, animated: false)
+    }
+    
+    @objc func selectAllItems() {
+        let rows = tableView.numberOfRows(inSection: 0)
+        for i in 0 ..< rows {
+            let path = IndexPath(row: i, section: 0)
+            tableView.selectRow(at: path, animated: true, scrollPosition: .none)
+            tableView(tableView, didSelectRowAt: path)
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
