@@ -31,6 +31,12 @@ class SelectionTableViewController: UITableViewController {
     }
     
     @objc func cancel() {
+        
+        #if targetEnvironment(macCatalyst)
+            /* remove highlight set by Mac workaround */
+            tableView.indexPathsForSelectedRows?.forEach { tableView.cellForRow(at: $0)?.isHighlighted = false }
+        #endif
+        
         let exportButtonItem  = UIBarButtonItem(title:"Export", style: .plain, target: self, action: #selector(startExporting))
         self.navigationItem.setLeftBarButtonItems([exportButtonItem], animated: true)
         self.navigationItem.setRightBarButtonItems([], animated: true)
@@ -67,6 +73,52 @@ class SelectionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-           print("didDeselectRowAt indexPath.row = \(indexPath.row)")
+        print("didDeselectRowAt indexPath.row = \(indexPath.row)")
     }
+    
+    #if targetEnvironment(macCatalyst)
+    
+    /*
+        Workaround from ph1lb4 on SO
+        https://stackoverflow.com/a/62061792/165180
+     */
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        print("willSelectRowAt indexPath.row = \(indexPath.row)")
+        if let selectedRows = tableView.indexPathsForSelectedRows, selectedRows.contains(indexPath) {
+            tableView.deselectRow(at: indexPath, animated: false)
+            return nil
+        }
+        return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        print("willDeselectRowAt indexPath.row = \(indexPath.row)")
+        if let selectedRows = tableView.indexPathsForSelectedRows, selectedRows.contains(indexPath) {
+            return nil
+        }
+        return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        // the mac sets isHighlighted of each other cell to false before selecting them again which leads to a flickering of the selection. Therefore go through the selected cells and highlight them here manually
+        tableView.indexPathsForSelectedRows?.forEach { tableView.cellForRow(at: $0)?.isHighlighted = true }
+        return true
+    }
+    
+    #else
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        print("willSelectRowAt indexPath.row = \(indexPath.row)")
+        return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        print("willDeselectRowAt indexPath.row = \(indexPath.row)")
+        return indexPath
+    }
+    
+    #endif
+    
+    
 }
