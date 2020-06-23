@@ -35,8 +35,8 @@ class SelectionTableViewController: UITableViewController {
         self.navigationItem.setLeftBarButtonItems([exportButtonItem], animated: true)
         self.navigationItem.setRightBarButtonItems([], animated: true)
         tableView.allowsMultipleSelectionDuringEditing = false
-        super.setEditing(true, animated: false)
-        tableView.setEditing(true, animated: false)
+        super.setEditing(false, animated: true)
+        tableView.setEditing(false, animated: true)
     }
     
     @objc func selectAllItems() {
