@@ -8,7 +8,7 @@
 
 import UIKit
 
-let rowContents = ["Zero", "One", "Two", "Three"]
+let rowContents = ["Zero", "One", "Two", "Three", "Four", "Five"]
 
 class SelectionTableViewController: UITableViewController {
     
