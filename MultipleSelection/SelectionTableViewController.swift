@@ -8,7 +8,7 @@
 
 import UIKit
 
-let rowContents = ["Zero", "One", "Two", "Three"]
+let rowContents = ["Zero", "One", "Two", "Three", "Four", "Five"]
 
 class SelectionTableViewController: UITableViewController {
     
@@ -94,10 +94,7 @@ class SelectionTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
         print("willDeselectRowAt indexPath.row = \(indexPath.row)")
-        if let selectedRows = tableView.indexPathsForSelectedRows, selectedRows.contains(indexPath) {
-            return nil
-        }
-        return indexPath
+        return nil
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
